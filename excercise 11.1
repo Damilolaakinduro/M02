@@ -1,0 +1,108 @@
+// GeometricObject.java: The abstract GeometricObject class
+public abstract class GeometricObject {
+  private String color = "white";
+  private boolean filled;
+
+  /**Default construct*/
+  protected GeometricObject() {
+  }
+
+  /**Construct a geometric object*/
+  protected GeometricObject(String color, boolean filled) {
+    this.color = color;
+    this.filled = filled;
+  }
+
+  /**Getter method for color*/
+  public String getColor() {
+    return color;
+  }
+
+  /**Setter method for color*/
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  /**Getter method for filled. Since filled is boolean,
+     so, the get method name is isFilled*/
+  public boolean isFilled() {
+    return filled;
+  }
+
+  /**Setter method for filled*/
+  public void setFilled(boolean filled) {
+    this.filled = filled;
+  }
+
+  /**Abstract method findArea*/
+  public abstract double getArea();
+
+  /**Abstract method getPerimeter*/
+  public abstract double getPerimeter();
+}
+
+public class Triangle extends GeometricObject {
+    private double side1;
+    private double side2;
+    private double side3;
+
+    // Default constructor
+    public Triangle() {
+        side1 = 1.0;
+        side2 = 1.0;
+        side3 = 1.0;
+    }
+
+    // Constructor with specified sides
+    public Triangle(double side1, double side2, double side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+
+    // Accessor methods for side1, side2, and side3
+    public double getSide1() {
+        return side1;
+    }
+
+    public double getSide2() {
+        return side2;
+    }
+
+    public double getSide3() {
+        return side3;
+    }
+
+    // Method to calculate and return the area of the triangle
+    public double getArea() {
+        double s = (side1 + side2 + side3) / 2.0;
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+
+    // Method to calculate and return the perimeter of the triangle
+    public double getPerimeter() {
+        return side1 + side2 + side3;
+    }
+
+    // Method to return a string description of the triangle
+    public String toString() {
+        return "Triangle: side1 = " + side1 + ", side2 = " + side2 + ", side3 = " + side3;
+    }
+}
+
+--------------------------------
+|        Triangle               |
+|------------------------------|
+| - side1: double               |
+| - side2: double               |
+| - side3: double               |
+|------------------------------|
+| + Triangle()                   |
+| + Triangle(side1: double, side2: double, side3: double) |
+| + getSide1(): double          |
+| + getSide2(): double          |
+| + getSide3(): double          |
+| + getArea(): double           |
+| + getPerimeter(): double      |
+| + toString(): String          |
+--------------------------------
