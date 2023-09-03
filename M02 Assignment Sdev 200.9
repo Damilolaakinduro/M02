@@ -1,0 +1,37 @@
+class BinaryFormatException extends Exception {
+    public BinaryFormatException(String message) {
+        super(message);
+    }
+}
+
+public class BinaryConverter {
+    public static void main(String[] args) {
+        try {
+            String binaryString = "10101"; // Replace with your binary string
+            int decimalValue = bin2Dec(binaryString);
+            System.out.println("Decimal Value: " + decimalValue);
+        } catch (BinaryFormatException e) {
+            System.err.println("Binary Format Exception: " + e.getMessage());
+        }
+    }
+
+    public static int bin2Dec(String binaryString) throws BinaryFormatException {
+        for (char c : binaryString.toCharArray()) {
+            if (c != '0' && c != '1') {
+                throw new BinaryFormatException("Invalid binary string: " + binaryString);
+            }
+        }
+
+        int decimalValue = 0;
+        int binaryBase = 1;
+
+        for (int i = binaryString.length() - 1; i >= 0; i--) {
+            if (binaryString.charAt(i) == '1') {
+                decimalValue += binaryBase;
+            }
+            binaryBase *= 2;
+        }
+
+        return decimalValue;
+    }
+}

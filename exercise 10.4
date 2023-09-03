@@ -1,0 +1,83 @@
+import java.util.*;
+
+public class MyDate {
+    private int year;
+    private int month;
+    private int day;
+
+    // No-arg constructor for the current date
+    public MyDate() {
+        GregorianCalendar calendar = new GregorianCalendar();
+        this.year = calendar.get(Calendar.YEAR);
+        this.month = calendar.get(Calendar.MONTH);
+        this.day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    // Constructor with elapsed time in milliseconds
+    public MyDate(long elapsedTime) {
+        setDate(elapsedTime);
+    }
+
+    // Constructor with specified year, month, and day
+    public MyDate(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+    }
+
+    // Getter for year
+    public int getYear() {
+        return year;
+    }
+
+    // Getter for month (0-based)
+    public int getMonth() {
+        return month;
+    }
+
+    // Getter for day
+    public int getDay() {
+        return day;
+    }
+
+    // Method to set a new date based on elapsed time
+    public void setDate(long elapsedTime) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.setTimeInMillis(elapsedTime);
+        this.year = calendar.get(Calendar.YEAR);
+        this.month = calendar.get(Calendar.MONTH);
+        this.day = calendar.get(Calendar.DAY_OF_MONTH);
+    }
+
+    public static void main(String[] args) {
+        MyDate date1 = new MyDate(); // Current date
+        MyDate date2 = new MyDate(34355555133101L); // Specified elapsed time
+
+        // Display year, month, and day for both dates
+        System.out.println("Date 1 (Current Date):");
+        System.out.println("Year: " + date1.getYear());
+        System.out.println("Month: " + date1.getMonth());
+        System.out.println("Day: " + date1.getDay());
+
+        System.out.println("\nDate 2 (Specified Elapsed Time):");
+        System.out.println("Year: " + date2.getYear());
+        System.out.println("Month: " + date2.getMonth());
+        System.out.println("Day: " + date2.getDay());
+    }
+}
+
+--------------------------------
+|          MyDate              |
+|------------------------------|
+| - year: int                  |
+| - month: int (0-based)      |
+| - day: int                   |
+|------------------------------|
+| + MyDate()                   |
+| + MyDate(elapsedTime: long)  |
+| + MyDate(year: int, month: int, day: int) |
+| + getYear(): int             |
+| + getMonth(): int            |
+| + getDay(): int              |
+| + setDate(elapsedTime: long): void |
+--------------------------------
